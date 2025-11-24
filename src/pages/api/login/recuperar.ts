@@ -159,8 +159,8 @@ const enviarEmailRecuperacao = async (
           html,
           attachments: [
             {
-              filename: "logo.png",
-              path: "./public/assets/images/Logo_Nizatech_Branco.png",
+              filename: "logo.webp",
+              path: "./public/assets/images/Logo_MensureLabs.webp",
               cid: "logo",
             },
             {

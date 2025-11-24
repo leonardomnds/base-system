@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   logo: {
     color: 'white',
-    height: 16,
+    height: 30,
     marginLeft: theme.spacing(2),
   },
   listItem: {
@@ -365,7 +365,7 @@ const Sidebar = (props: Props) => {
             />
           </Tooltip>
           <img
-            src="/assets/images/Logo_Nizatech_Branco.png"
+            src="/assets/images/Logo_MensureLabs.webp"
             alt="logo"
             className={classes.logo}
           />

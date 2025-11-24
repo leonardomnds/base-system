@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   logo: {
     color: 'black',
-    height: 16,
+    height: 30,
     marginLeft: theme.spacing(2),
   },
   accountSection: {
@@ -85,7 +85,7 @@ function TopBar(props: Props) {
             />
           </Tooltip>
           <img
-            src={'/assets/images/Logo_Nizatech_Azul.png'}
+            src={'/assets/images/Logo_MensureLabs.webp'}
             alt="logo"
             className={classes.logo}
           />
