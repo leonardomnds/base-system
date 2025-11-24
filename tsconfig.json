@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2020",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "es2020"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,13 +16,20 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/components/FormControl/dd.tsx", "src/db/config/graphqlSchema.js", "src/util/Api.ts", "src/components/Layout/index.tsx", "src/components/Layout/SideBar.js", "src/pages/index.tsx"  ],
+    "**/*.tsx",
+    "src/components/FormControl/dd.tsx",
+    "src/db/config/graphqlSchema.js",
+    "src/util/Api.ts",
+    "src/components/Layout/index.tsx",
+    "src/components/Layout/SideBar.js",
+    "src/pages/index.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]

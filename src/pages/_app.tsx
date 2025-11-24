@@ -2,9 +2,9 @@ import React from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ToastProvider } from 'react-toast-notifications';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { theme2 } from '../theme';
 import Toast, { ToastContainer } from '../components/Toast';

@@ -3,13 +3,15 @@ import cookie from 'js-cookie';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { useTheme, makeStyles, Box } from '@material-ui/core';
+import { Box } from '@mui/material';
+import { useTheme, Theme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 
 import TopBar from './TopBar';
 import Sidebar from './SideBar';
 import useWindowSize from '../../util/WindowSize';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     backgroundColor: theme.palette.background.default,
   },

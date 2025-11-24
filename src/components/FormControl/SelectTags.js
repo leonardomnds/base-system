@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles, Checkbox, TextField } from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import CheckBoxIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxSelectedIcon from '@material-ui/icons/CheckBox';
+import { Checkbox, TextField, Autocomplete } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import CheckBoxIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxSelectedIcon from '@mui/icons-material/CheckBox';
 
 const { v4: uuidv4 } = require('uuid');
 
@@ -38,26 +38,22 @@ function SelectTags({ label, items, limitTags, value, setValue }) {
       }}
       disableCloseOnSelect
       getOptionLabel={(item) => item.label}
-      getOptionSelected={(item, val) => item.id === val.id}
-      renderOption={(item, { selected }) => {
-        return (
-          <>
-            <Checkbox
-              icon={
-                <CheckBoxIcon className={classes.checkbox} fontSize="small" />
-              }
-              checkedIcon={
-                <CheckBoxSelectedIcon
-                  className={classes.checkbox}
-                  fontSize="small"
-                />
-              }
-              checked={selected}
-            />
-            {item.label}
-          </>
-        );
-      }}
+      isOptionEqualToValue={(item, val) => item.id === val.id}
+      renderOption={(optionProps, item, { selected }) => (
+        <li {...optionProps}>
+          <Checkbox
+            icon={<CheckBoxIcon className={classes.checkbox} fontSize="small" />}
+            checkedIcon={
+              <CheckBoxSelectedIcon
+                className={classes.checkbox}
+                fontSize="small"
+              />
+            }
+            checked={selected}
+          />
+          {item.label}
+        </li>
+      )}
       ChipProps={{ size: 'small', color: 'primary' }}
       renderInput={(params) => <TextField {...params} label={label} />}
     />

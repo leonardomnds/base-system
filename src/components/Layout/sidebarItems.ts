@@ -1,8 +1,8 @@
-import HomeIcon from '@material-ui/icons/HomeRounded';
-import CategoryIcon from '@material-ui/icons/CategoryRounded';
-import TuneIcon from '@material-ui/icons/TuneRounded';
-import DescriptionIcon from '@material-ui/icons/DescriptionRounded';
-import SettingsIcon from '@material-ui/icons/SettingsRounded';
+import HomeIcon from '@mui/icons-material/HomeRounded';
+import CategoryIcon from '@mui/icons-material/CategoryRounded';
+import TuneIcon from '@mui/icons-material/TuneRounded';
+import DescriptionIcon from '@mui/icons-material/DescriptionRounded';
+import SettingsIcon from '@mui/icons-material/SettingsRounded';
 
 export type SubMenu = {
   label: string,

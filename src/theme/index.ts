@@ -1,10 +1,10 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { colors } from '@material-ui/core';
+import { createTheme } from '@mui/material/styles';
+import { colors } from '@mui/material';
 
 // Modelo
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
-    type: 'light',
+    mode: 'light',
     background: {      
       default: '#E9EBEF',
       paper: colors.common.white,
@@ -30,9 +30,9 @@ const theme = createMuiTheme({
   },
 });
 
-export const theme2 = createMuiTheme({
+export const theme2 = createTheme({
   palette: {
-    type: 'light',
+    mode: 'light',
     primary: {
       main: '#1976D2',
     },

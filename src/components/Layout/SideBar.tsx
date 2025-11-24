@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import {
-  useTheme,
-  makeStyles,
   Drawer,
   Box,
   List,
@@ -14,18 +12,20 @@ import {
   Collapse,
   Tooltip,
   Hidden,
-} from '@material-ui/core';
+} from '@mui/material';
+import { useTheme, Theme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 
-import ExpandLessIcon from '@material-ui/icons/ExpandLessRounded';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMoreRounded';
-import DotIcon from '@material-ui/icons/FiberManualRecordRounded';
-import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
+import ExpandLessIcon from '@mui/icons-material/ExpandLessRounded';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMoreRounded';
+import DotIcon from '@mui/icons-material/FiberManualRecordRounded';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
 import sidebarItems, { Menu, SubMenu } from './sidebarItems';
 import useWindowSize from '../../util/WindowSize';
 import { GetDataFromJwtToken } from '../../util/functions';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   drawer: {
     width: 240,
     height: 'calc(100% - 55px)',

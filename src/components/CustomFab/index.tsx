@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, Fab } from '@material-ui/core';
+import { Fab } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
-import AddCircleIcon from '@material-ui/icons/AddCircleOutlineRounded';
+import AddCircleIcon from '@mui/icons-material/AddCircleOutlineRounded';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   fab: {
     margin: 0,
     top: 'auto',

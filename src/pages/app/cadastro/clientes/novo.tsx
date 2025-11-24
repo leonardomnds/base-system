@@ -3,18 +3,19 @@ import { useRouter } from "next/router";
 import { useToasts } from "react-toast-notifications";
 
 import {
-  makeStyles,
   Box,
   Paper,
   Tabs,
   Tab,
   Grid,
   Hidden,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
 
-import CachedIcon from "@material-ui/icons/CachedRounded";
+import CachedIcon from "@mui/icons-material/CachedRounded";
 
-import SaveRoundedIcon from "@material-ui/icons/SaveRounded";
+import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
 import PageHeader from "../../../../components/Layout/PageHeader";
 import TextField, {
   getEndItemIconButton,
@@ -41,7 +42,7 @@ import {
 import { GetServerSideProps, NextPage } from "next";
 import { CategoriaPessoa, GrupoPessoa, Pessoa } from ".prisma/client";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FormControlLabel, Checkbox } from '@material-ui/core';
+import { FormControlLabel, Checkbox } from '@mui/material';
 
 const { v4: uuidv4 } = require('uuid');
 

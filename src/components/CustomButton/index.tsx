@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 
-import { makeStyles, Button, CircularProgress } from '@material-ui/core';
+import { Button, CircularProgress } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   btn: {

@@ -1,9 +1,11 @@
-import { makeStyles, TextField } from '@material-ui/core'
+import { TextField } from '@mui/material';
+import { makeStyles } from '@mui/styles'
+import { Theme } from '@mui/material/styles';
 import React from 'react'
 
 const { v4: uuidv4 } = require('uuid');
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

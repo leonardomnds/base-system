@@ -1,18 +1,20 @@
 import React from 'react';
 
-import DateFnsUtils from "@date-io/date-fns";
 import ptBrLocale from "date-fns/locale/pt-BR";
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
+import { TextField } from "@mui/material";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const { v4: uuidv4 } = require('uuid');
 
 type Props = {
   label: string,
   disabled?: boolean,
-  value: Date,
+  value: Date | null,
   minValue?: Date,
   maxValue?: Date,
-  setValue?: (v: Date) => void,
+  setValue?: (v: Date | null) => void,
   variant?: 'inline' | 'dialog'
 }
 
@@ -22,30 +24,29 @@ function CustomTextField({
   value,
   minValue,
   maxValue,
-  setValue = (v: Date) => {},
-  variant = 'inline'
+  setValue = (v: Date | null) => {},
 }: Props) {
   const uuid = uuidv4();
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
-      <KeyboardDatePicker
-        id={uuid}
+    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBrLocale}>
+      <DatePicker
         label={label}
-        format="dd/MM/yyyy"
-        disabled={disabled}
-        variant={variant}
         value={value}
-        onChange={setValue}
-        fullWidth
-        autoOk={variant === 'inline'}
-        minDate={minValue || new Date(1900,1,1)}
-        maxDate={maxValue || new Date(2100,1,1)}
-        invalidDateMessage="Data inválida"
-        minDateMessage="Data anterior à mínima permitida"
-        maxDateMessage="Data posterior à máxima permitida"
+        onChange={(newValue) => setValue(newValue)}
+        minDate={minValue || new Date(1900, 1, 1)}
+        maxDate={maxValue || new Date(2100, 1, 1)}
+        slotProps={{
+          textField: {
+            id: uuid,
+            disabled,
+            fullWidth: true,
+            autoComplete: "off",
+            variant: "standard"
+          },
+        }}
       />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 }
 

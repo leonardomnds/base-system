@@ -3,17 +3,18 @@ import { useToasts } from 'react-toast-notifications';
 import { addHours, format } from 'date-fns';
 
 import {
-  makeStyles,
   Dialog,
   DialogTitle,
   DialogContent,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
 import CustomTable, { getColumn, getRow } from '../Table';
 import api from '../../util/Api';
 import { Pessoa } from '.prisma/client';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { DefaultToast, DefaultToastContainer } from 'react-toast-notifications';
-import { makeStyles, Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   toast: {

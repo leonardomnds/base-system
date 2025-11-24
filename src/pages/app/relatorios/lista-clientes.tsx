@@ -1,6 +1,8 @@
-import { makeStyles, Box, Grid, Paper } from "@material-ui/core";
-import PrintIcon from "@material-ui/icons/PrintRounded";
-import GridIcon from "@material-ui/icons/GridOnRounded";
+import { Box, Grid, Paper } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
+import PrintIcon from "@mui/icons-material/PrintRounded";
+import GridIcon from "@mui/icons-material/GridOnRounded";
 
 import { useRouter } from "next/router";
 
@@ -21,7 +23,7 @@ import { listarEstados } from "../../api/estados";
 import ExportarXLSX from "../../../components/CustomDialog/ExportarXLSX";
 import { Base64 } from "js-base64";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

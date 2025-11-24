@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 
 import {
-  makeStyles,
   Typography,
   Box,
   Button,
   IconButton,
   CircularProgress,
   Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
-import AddCircleIcon from '@material-ui/icons/AddCircleOutlineRounded';
-import ArrowBackIcon from '@material-ui/icons/ArrowBackRounded';
+import AddCircleIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import ArrowBackIcon from '@mui/icons-material/ArrowBackRounded';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   header: {
     display: 'flex',
     alignItems: 'end',

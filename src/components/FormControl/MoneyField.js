@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  makeStyles,
   Input,
   FormControl,
   InputLabel,
   InputAdornment,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { FormatarStringToMoney, StringToDouble } from '../../util/functions';
 
