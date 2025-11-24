@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useToasts } from 'react-toast-notifications';
 
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import PageHeader from '../../../../components/Layout/PageHeader';
 
 import CustomTable, { getColumn, getRow } from '../../../../components/Table';

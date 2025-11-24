@@ -2,22 +2,22 @@ import cookie from 'js-cookie';
 import React, { useEffect } from 'react';
 
 import {
-  useTheme,
-  makeStyles,
   AppBar,
   Toolbar,
   Box,
   IconButton,
   Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
+import { useTheme, Theme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 
-import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
-// import NotificationsRoundedIcon from '@material-ui/icons/NotificationsRounded';
+// import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import Account from '../Account';
 import useWindowSize from '../../util/WindowSize';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
     boxShadow: '0px -2px 5px grey',
     zIndex: theme.zIndex.drawer - 1,

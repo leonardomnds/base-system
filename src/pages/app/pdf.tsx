@@ -4,7 +4,8 @@ import { GetServerSideProps } from 'next';
 import { PDFViewer } from '@react-pdf/renderer';
 import { Base64 } from 'js-base64';
 
-import { Box, Typography, CircularProgress, makeStyles } from '@material-ui/core';
+import { Box, Typography, CircularProgress } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { NomeRelatorio } from '../../reports/nomesRelatorios';
 
 // Relatórios
@@ -129,6 +130,18 @@ export const getServerSideProps : GetServerSideProps = async ({ query: { ref, fi
   if (rel && rel[0]) {    
     relIndex = parseInt(ref.toString(), 10);
     data = await rel[0].getData((filters || '').toString().length === 0 ? '1=1' : Base64.atob(decodeURI(where)));
+    // Next.js serialization guard: convert Date objects to ISO strings
+    if (Array.isArray(data)) {
+      data = data.map((item) => {
+        const converted = { ...item };
+        Object.keys(converted).forEach((key) => {
+          if (converted[key] instanceof Date) {
+            converted[key] = (converted[key] as Date).toISOString();
+          }
+        });
+        return converted;
+      });
+    }
     if (data?.length === 0) {
       data = null;
     }

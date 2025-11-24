@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useToasts } from "react-toast-notifications";
 import {
-  makeStyles,
   TextField,
   Paper,
   Box,
@@ -11,13 +10,15 @@ import {
   Button,
   CircularProgress,
   Link,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
 
 import api from "../../util/Api";
 import { GetServerSideProps, NextPage } from "next";
 import { FormatarCpfCnpj } from "../../util/functions";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

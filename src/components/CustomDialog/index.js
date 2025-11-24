@@ -8,7 +8,7 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-} from '@material-ui/core';
+} from '@mui/material';
 
 function CustomDialog({
   title,

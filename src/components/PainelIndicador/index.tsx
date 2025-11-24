@@ -1,11 +1,13 @@
 import React from 'react'
 import clsx from 'clsx';
 
-import { useTheme, makeStyles, Box, Paper, Typography, CircularProgress } from '@material-ui/core';
-import DetailIcon from '@material-ui/icons/PlaylistPlayRounded';
+import { Box, Paper, Typography, CircularProgress } from '@mui/material';
+import { useTheme, Theme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
+import DetailIcon from '@mui/icons-material/PlaylistPlayRounded';
 import CustomButton from '../CustomButton';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

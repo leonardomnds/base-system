@@ -1,8 +1,10 @@
-import { makeStyles, Box, Grid, Paper, Hidden } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/SearchRounded";
-import CloseIcon from "@material-ui/icons/CloseRounded";
-import PrintIcon from "@material-ui/icons/PrintRounded";
-import GridIcon from "@material-ui/icons/GridOnRounded";
+import { Box, Grid, Paper, Hidden } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/SearchRounded";
+import CloseIcon from "@mui/icons-material/CloseRounded";
+import PrintIcon from "@mui/icons-material/PrintRounded";
+import GridIcon from "@mui/icons-material/GridOnRounded";
 
 import { useToasts } from "react-toast-notifications";
 import React, { useState } from "react";
@@ -28,7 +30,7 @@ import { NomeRelatorio } from "../../../reports/nomesRelatorios";
 import { Base64 } from "js-base64";
 import ExportarXLSX from "../../../components/CustomDialog/ExportarXLSX";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

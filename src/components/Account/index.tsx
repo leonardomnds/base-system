@@ -3,9 +3,11 @@ import cookie from 'js-cookie';
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from "next/router";
 
-import { makeStyles, Avatar, Menu, MenuItem } from '@material-ui/core';
+import { Avatar, Menu, MenuItem } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   avatar: {
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.secondary.contrastText,
@@ -97,7 +99,6 @@ function Account(props: Props) {
         }}
         open={isOpen}
         onClose={handleClose}
-        getContentAnchorEl={null}
       >
         {items.map((item) => {
           return isAuthenticated === item.auth ? (

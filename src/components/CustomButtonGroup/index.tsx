@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  makeStyles,
   Button,
   ButtonGroup,
   ClickAwayListener,
@@ -12,16 +11,17 @@ import {
   MenuItem,
   MenuList,
   SvgIconTypeMap,
-} from '@material-ui/core';
-
-import EditIcon from '@material-ui/icons/EditRounded';
-import DeleteIcon from '@material-ui/icons/DeleteRounded';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDownRounded';
-import { OverridableComponent } from '@material-ui/core/OverridableComponent';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import EditIcon from '@mui/icons-material/EditRounded';
+import DeleteIcon from '@mui/icons-material/DeleteRounded';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDownRounded';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 const { v4: uuidv4 } = require('uuid');
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     backgroundColor: theme.palette.background.paper,
   },

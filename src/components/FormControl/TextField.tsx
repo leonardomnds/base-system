@@ -1,18 +1,19 @@
 import React, { ReactNode } from 'react';
 
 import {
-  makeStyles,
   Input,
   FormControl,
   InputLabel,
   InputAdornment,
   IconButton,
   Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
 const { v4: uuidv4 } = require('uuid');
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

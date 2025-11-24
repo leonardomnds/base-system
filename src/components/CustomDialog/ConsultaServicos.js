@@ -3,11 +3,11 @@ import { useToasts } from 'react-toast-notifications';
 import PropTypes from 'prop-types';
 
 import {
-  makeStyles,
   Dialog,
   DialogTitle,
   DialogContent,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import CustomTable, { getColumn, getRow } from '../Table';
 import api from '../../util/Api';
