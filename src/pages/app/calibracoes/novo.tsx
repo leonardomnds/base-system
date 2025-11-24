@@ -193,8 +193,6 @@ const List: NextPage<Props> = (props: Props) => {
           formData.append("numero_certificado", numeroCertificado);
         if (laboratorio) formData.append("laboratorio", laboratorio);
 
-        console.log({ arquivoCertificado })
-
         if (arquivoCertificado?.file) {
           formData.append("pdfCertificadoBase64", await fileToBase64(arquivoCertificado.file) as string);
         }

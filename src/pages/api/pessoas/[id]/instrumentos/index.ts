@@ -6,6 +6,14 @@ import cors from "../../../../../util/Cors";
 import { ValidateAuth } from "../../../../../util/functions";
 import ConsultasComuns from "../../../../../util/ConsultasComuns";
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "20mb",
+    },
+  },
+};
+
 export default async function Instrumentos(
   req: NextApiRequest,
   res: NextApiResponse
@@ -129,6 +137,7 @@ export const getInstrumentoJsonReturn = () => {
     serie: true,
     observacoes: true,
     ativo: true,
+    fotoBase64: true,
     data_cadastro: true,
   };
 };

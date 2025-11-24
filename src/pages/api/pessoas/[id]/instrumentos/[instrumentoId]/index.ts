@@ -6,6 +6,14 @@ import prisma from '../../../../../../prisma/PrismaInstance';
 import cors from '../../../../../../util/Cors';
 import { ValidateAuth } from '../../../../../../util/functions';
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '20mb',
+    },
+  },
+};
+
 export default async function Instrumentos(req: NextApiRequest, res: NextApiResponse) {
   try {
 
