@@ -28,7 +28,7 @@ export default function MyApp(props) {
   return (
     <>
       <Head>
-        <title>Nizatech</title>
+        <title>MensureLabs - Gestão Metrológica</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
