@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useToasts } from "react-toast-notifications";
 import { useRouter } from "next/router";
 
-import { makeStyles, Box, Paper, Grid } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/SearchRounded";
-import CloseIcon from "@material-ui/icons/CloseRounded";
-import UploadIcon from "@material-ui/icons/AttachFileRounded";
+import { Box, Paper, Grid } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/SearchRounded";
+import CloseIcon from "@mui/icons-material/CloseRounded";
+import UploadIcon from "@mui/icons-material/AttachFileRounded";
 
 import PageHeader from "../../../components/Layout/PageHeader";
 
@@ -25,11 +27,11 @@ import {
 } from "../../../util/functions";
 import ConsultaPessoas from "../../../components/CustomDialog/ConsultaPessoas";
 import ConsultaInstrumentos from "../../../components/CustomDialog/ConsultaInstrumentos";
-import SaveRoundedIcon from "@material-ui/icons/SaveRounded";
+import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
 import CustomButton from "../../../components/CustomButton";
 import { addHours, format } from "date-fns";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

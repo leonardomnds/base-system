@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import {
-  makeStyles,
   Table,
   TableBody,
   TableCell,
@@ -19,12 +18,14 @@ import {
   Grid,
   TextField,
   InputAdornment,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
 
-import EditIcon from "@material-ui/icons/EditRounded";
-import DeleteIcon from "@material-ui/icons/DeleteRounded";
-import SearchIcon from "@material-ui/icons/SearchRounded";
-import CheckIcon from "@material-ui/icons/CheckCircleRounded";
+import EditIcon from "@mui/icons-material/EditRounded";
+import DeleteIcon from "@mui/icons-material/DeleteRounded";
+import SearchIcon from "@mui/icons-material/SearchRounded";
+import CheckIcon from "@mui/icons-material/CheckCircleRounded";
 
 import {
   SomenteNumeros,
@@ -33,7 +34,7 @@ import {
   ZerosLeft,
 } from "../../util/functions";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     backgroundColor: theme.palette.background.paper,
   },
@@ -263,17 +264,18 @@ function CustomTable({
     return (
       <Box className={classes.paginationBox}>
         <TablePagination
-          rowsPerPageOptions={[]}
           component="div"
+          rowsPerPageOptions={[]}
           count={filteredRows.length}
           rowsPerPage={rowsPerPage}
           page={page}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
           labelRowsPerPage="Exibir"
-          nextIconButtonText="Próxima página"
-          backIconButtonText="Página anterior"
           labelDisplayedRows={paginationRowsInfo}
+          getItemAriaLabel={(type) =>
+            type === "next" ? "Próxima página" : "Página anterior"
+          }
         />
       </Box>
     );

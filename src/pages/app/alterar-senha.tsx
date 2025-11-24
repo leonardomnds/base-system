@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { useToasts } from 'react-toast-notifications';
 import { useRouter } from 'next/router';
 
-import { makeStyles, Box, Grid, Paper } from '@material-ui/core';
-import SaveRoundedIcon from '@material-ui/icons/SaveRounded';
+import { Box, Grid, Paper } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import PageHeader from '../../components/Layout/PageHeader';
 
 import TextField from '../../components/FormControl/TextField';
@@ -11,7 +13,7 @@ import TextField from '../../components/FormControl/TextField';
 
 import api from '../../util/Api';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

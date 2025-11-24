@@ -3,7 +3,6 @@ import { useToasts } from 'react-toast-notifications';
 import fileDownload from "js-file-download";
 
 import {
-  makeStyles,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -12,8 +11,10 @@ import {
   ListItemText,
   ListItemIcon,
   DialogActions,
-} from '@material-ui/core';
-import DownloadIcon from '@material-ui/icons/CloudDownloadRounded';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import DownloadIcon from '@mui/icons-material/CloudDownloadRounded';
 
 import Checkbox from '../FormControl/Checkbox';
 import api from '../../util/Api';
@@ -23,7 +24,7 @@ import { format } from 'date-fns';
 
 const { v4: uuidv4 } = require('uuid');
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

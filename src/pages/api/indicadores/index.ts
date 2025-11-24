@@ -32,6 +32,7 @@ export default async function Indicadores(
     if (req.method === "GET") {
       let sqlResult: any[];
       const json: IndicadoresType = {};
+      const toNumber = (val: any) => Number(val ?? 0);
 
       // Quantidade de Clientes Ativos
       sqlResult = await prisma.$queryRawUnsafe(
@@ -39,7 +40,7 @@ export default async function Indicadores(
           pessoaId ? `id = '${pessoaId}'` : "1=1"
         }`
       );
-      json.clientes_ativos = sqlResult[0].qtde;
+      json.clientes_ativos = toNumber(sqlResult[0].qtde);
 
       // Quantidade de Instrumentos Ativos
       sqlResult = await prisma.$queryRawUnsafe(
@@ -47,7 +48,7 @@ export default async function Indicadores(
           pessoaId ? `pessoa_id = '${pessoaId}'` : "1=1"
         }`
       );
-      json.instrumentos_ativos = sqlResult[0].qtde;
+      json.instrumentos_ativos = toNumber(sqlResult[0].qtde);
 
       // Quantidade de Calibrações Vencidas
       sqlResult =
@@ -55,7 +56,7 @@ export default async function Indicadores(
         where v.ativo = 1 and v.dias_vencer < 0 and ${
           pessoaId ? `v.pessoa_id = '${pessoaId}'` : "1=1"
         }`);
-      json.calibracoes_vencidas = sqlResult[0].qtde;
+      json.calibracoes_vencidas = toNumber(sqlResult[0].qtde);
 
       // Quantidade de Calibrações a Vencer em 7 dias
       sqlResult =
@@ -63,7 +64,7 @@ export default async function Indicadores(
         where v.ativo = 1 and v.dias_vencer between 0 and 7 and ${
           pessoaId ? `v.pessoa_id = '${pessoaId}'` : "1=1"
         }`);
-      json.calibracoes_vencer_7 = sqlResult[0].qtde;
+      json.calibracoes_vencer_7 = toNumber(sqlResult[0].qtde);
 
       // Quantidade de Calibrações a Vencer em 15 dias
       sqlResult =
@@ -71,7 +72,7 @@ export default async function Indicadores(
         where v.ativo = 1 and v.dias_vencer between 0 and 15 and ${
           pessoaId ? `v.pessoa_id = '${pessoaId}'` : "1=1"
         }`);
-      json.calibracoes_vencer_15 = sqlResult[0].qtde;
+      json.calibracoes_vencer_15 = toNumber(sqlResult[0].qtde);
 
       // Quantidade de Calibrações a Vencer em 30 dias
       sqlResult =
@@ -79,7 +80,7 @@ export default async function Indicadores(
         where v.ativo = 1 and v.dias_vencer between 0 and 30 and ${
           pessoaId ? `v.pessoa_id = '${pessoaId}'` : "1=1"
         }`);
-      json.calibracoes_vencer_30 = sqlResult[0].qtde;
+      json.calibracoes_vencer_30 = toNumber(sqlResult[0].qtde);
 
       res.status(200).json(json);
       return;

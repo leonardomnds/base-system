@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import { format } from "date-fns";
 
-import { makeStyles, Box, Grid, Paper, Typography } from '@material-ui/core';
+import { Box, Grid, Paper, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 import {
   PeopleRounded as PeopleRoundedIcon,
   SpeedRounded as SpeedRoundedIcon,
   EventNoteRounded as EventNoteRoundedIcon,
-} from '@material-ui/icons';
+} from '@mui/icons-material';
 
 import PageHeader from '../../components/Layout/PageHeader';
 
@@ -18,7 +20,7 @@ import { NomeRelatorio } from '../../reports/nomesRelatorios';
 import PainelIndicador from '../../components/PainelIndicador';
 import { IndicadoresType } from '../api/indicadores';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

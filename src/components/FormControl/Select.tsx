@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  makeStyles,
   Select,
   FormControl,
   InputLabel,
@@ -9,13 +8,15 @@ import {
   Box,
   Tooltip,
   IconButton,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
-import AddCircleIcon from '@material-ui/icons/AddCircleRounded';
+import AddCircleIcon from '@mui/icons-material/AddCircleRounded';
 
 const { v4: uuidv4 } = require('uuid');
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },
@@ -68,7 +69,7 @@ function CustomSelect({
   const uuid = uuidv4();
   return (
     <Box className={classes.box}>
-      <FormControl className={classes.input}>
+      <FormControl className={classes.input} variant="standard">
         <InputLabel htmlFor={uuid}>{label}</InputLabel>
         <Select
           labelId={uuid}

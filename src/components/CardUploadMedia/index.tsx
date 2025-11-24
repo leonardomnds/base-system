@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  makeStyles,
   Card,
   CardActionArea,
   CardContent,
@@ -12,7 +11,8 @@ import {
   Input,
   InputLabel,
   Box,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { ToBase64 } from '../../util/functions';
 

@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router';
 import { useToasts } from 'react-toast-notifications';
 
-import { makeStyles, Box, Paper, Grid, Typography, Hidden } from '@material-ui/core';
-import SaveRoundedIcon from '@material-ui/icons/SaveRounded';
+import { Box, Paper, Grid, Typography, Hidden } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 
 import PageHeader from '../../../components/Layout/PageHeader';
 import { GetServerSideProps } from 'next';
@@ -18,7 +20,7 @@ import { Base64 } from 'js-base64';
 import api from '../../../util/Api';
 import CustomButton from '../../../components/CustomButton';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

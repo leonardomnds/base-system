@@ -3,15 +3,16 @@ import { useRouter } from 'next/router';
 import { useToasts } from 'react-toast-notifications';
 
 import {
-  makeStyles,
   Box,
   Paper,
   Grid,
   Avatar,
   Hidden,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 
-import SaveRoundedIcon from '@material-ui/icons/SaveRounded';
+import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import PageHeader from '../../../../components/Layout/PageHeader';
 import TextField from '../../../../components/FormControl/TextField';
 import Select from '../../../../components/FormControl/Select';
@@ -25,7 +26,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { Usuario } from '.prisma/client';
 import { ConvertBlobToFile } from '../../../../util/functions';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },

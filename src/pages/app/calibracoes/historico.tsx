@@ -3,10 +3,12 @@ import { useRouter } from "next/router";
 import { useToasts } from "react-toast-notifications";
 import { addDays, addHours, format } from "date-fns";
 
-import { makeStyles, Box, Paper, Grid, Hidden } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/SearchRounded";
-import CloseIcon from "@material-ui/icons/CloseRounded";
-import PdfIcon from "@material-ui/icons/FindInPageRounded";
+import { Box, Paper, Grid, Hidden } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Theme } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/SearchRounded";
+import CloseIcon from "@mui/icons-material/CloseRounded";
+import PdfIcon from "@mui/icons-material/FindInPageRounded";
 
 import PageHeader from "../../../components/Layout/PageHeader";
 
@@ -30,7 +32,7 @@ import ConsultaPessoas from "../../../components/CustomDialog/ConsultaPessoas";
 import ConsultaInstrumentos from "../../../components/CustomDialog/ConsultaInstrumentos";
 import CustomDialog from "../../../components/CustomDialog";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   themeError: {
     color: theme.palette.background.paper,
   },
