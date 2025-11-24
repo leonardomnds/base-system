@@ -84,6 +84,7 @@ model Instrumento {
   faixa String? @db.VarChar(100)
   resolucao String? @db.VarChar(100)
   observacoes String? @db.Text
+  fotoBase64 String? @db.LongText
   ativo Boolean @default(true)
   data_cadastro DateTime @default(now())
   calibracoes Calibracao[]

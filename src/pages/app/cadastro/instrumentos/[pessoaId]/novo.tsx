@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useToasts } from "react-toast-notifications";
-import { addHours, format } from "date-fns";
 
 import {
   Box,
   Paper,
+  Button,
   Tabs,
   Tab,
   Grid,
@@ -15,6 +15,7 @@ import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/material/styles";
 
 import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
+import UploadIcon from "@mui/icons-material/AttachFileRounded";
 import PageHeader from "../../../../../components/Layout/PageHeader";
 import TextField from "../../../../../components/FormControl/TextField";
 import Observacoes from "../../../../../components/FormControl/Observacoes";
@@ -24,7 +25,7 @@ import api from "../../../../../util/Api";
 
 import { GetServerSideProps, NextPage } from "next";
 import { Instrumento } from ".prisma/client";
-import { FormatUtcDate, SomenteNumeros } from "../../../../../util/functions";
+import {ConvertBase64ToFile, ConvertFileToBase64, FormatUtcDate, SomenteNumeros} from "../../../../../util/functions";
 import CustomTable, {
   getColumn,
   getRow,
@@ -37,6 +38,27 @@ const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     padding: 20,
     marginBottom: 25,
+  },
+  input: {
+    display: "none",
+  },
+  fotoActions: {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(2),
+    marginTop: theme.spacing(1),
+  },
+  fotoInfo: {
+    marginTop: theme.spacing(1),
+    color: theme.palette.text.secondary,
+  },
+  fotoPreviewWrapper: {
+    marginTop: theme.spacing(2),
+  },
+  fotoPreview: {
+    maxWidth: "100%",
+    maxHeight: 360,
+    borderRadius: 4,
   },
   tabs: {
     marginTop: 25,
@@ -82,11 +104,36 @@ const NewInstrument: NextPage<Props> = (props: Props) => {
 
   // Observações
   const [observacoes, setObservacoes] = useState<string>("");
+  
+  // Foto
+  const [foto, setFoto] = useState<{ file: any; preview: any }>(null);
 
   // Histórico de Calibrações
   const [isFinded, setFinded] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [linhas, setLinhas] = useState<Array<any>>([]);
+
+  const setFotoInstrumento = (evt) => {    
+    const file = evt?.target?.files?.[0];
+    if (file && /\.(png|jpe?g|gif|webp|bmp)$/i.test(file.name)) {
+      setFoto({
+        file,
+        preview: URL.createObjectURL(file),
+      });
+    } else {
+      addToast("Formato do arquivo inválido.", { appearance: "warning" });
+    }
+
+    if (evt?.target) {
+      evt.target.value = "";
+    }
+  };
+
+  const getFotoBase64 = (): Promise<string> | string => {
+    if (!foto?.file) { return ''; }
+
+    return ConvertFileToBase64(foto.file) as Promise<string>;
+  };
 
   const handleChangeTab = (event, newValue) => {
     setCurrentTab(newValue);
@@ -121,7 +168,8 @@ const NewInstrument: NextPage<Props> = (props: Props) => {
           observacoes: observacoes || null,
           tempo_calibracao: tempoCalibracao || 0,
           ativo: isAtivo,
-          data_cadastro: null,
+          data_cadastro: null!,
+          fotoBase64: await getFotoBase64(),
         };
 
         let response;
@@ -194,7 +242,7 @@ const NewInstrument: NextPage<Props> = (props: Props) => {
       setLoading(false);
     };
 
-    if (instrumentoId && currentTab === 2 && !isFinded) {
+    if (instrumentoId && currentTab === 3 && !isFinded) {
       getData();
     }
   }, [currentTab]);
@@ -223,6 +271,16 @@ const NewInstrument: NextPage<Props> = (props: Props) => {
             setFabricante(ins.fabricante);
             setObservacoes(ins.observacoes);
             setTempoCalibracao(ins.tempo_calibracao);
+            
+            if (ins.fotoBase64) {
+              const file = ConvertBase64ToFile(ins.fotoBase64, 'foto');
+              setFoto({
+                file: file,
+                preview: URL.createObjectURL(file),
+              });
+            } else {
+              setFoto(null)
+            }
           } else {
             router.push("/app/cadastro/instrumentos?pessoaId=" + pessoaId);
           }
@@ -253,7 +311,55 @@ const NewInstrument: NextPage<Props> = (props: Props) => {
             </Grid>
           </Grid>
         );
-      case 2:
+      case 2: // Foto
+        return (
+          <Grid container spacing={2}>
+            <Grid item xs={12}>              
+              <input
+                accept="image/*"
+                className={classes.input}
+                id="inputFotoInstrumento"
+                type="file"
+                onChange={(evt) => setFotoInstrumento(evt)}
+              />
+              <Box className={classes.fotoActions}>
+                <label htmlFor="inputFotoInstrumento">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    component="span"
+                    startIcon={<UploadIcon />}
+                  >
+                    Selecionar imagem
+                  </Button>
+                </label>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => setFoto(null)}
+                  disabled={!foto}
+                >
+                  Remover
+                </Button>
+              </Box>
+              {!foto?.file?.name && (
+                <Box className={classes.fotoInfo}>
+                  Nenhuma imagem selecionada
+                </Box>
+              )}
+              {foto?.preview && (
+                <Box className={classes.fotoPreviewWrapper}>
+                  <img
+                    src={foto.preview}
+                    alt="Foto do instrumento selecionada"
+                    className={classes.fotoPreview}
+                  />
+                </Box>
+              )}
+            </Grid>
+          </Grid>
+        );
+      case 3: // Calibrações
         return (
           <CustomTable isLoading={isLoading} columns={colunas} rows={linhas} />
         );
@@ -366,6 +472,7 @@ const NewInstrument: NextPage<Props> = (props: Props) => {
         >
           <Tab label="Dados gerais" />
           <Tab label="Observações" />
+          <Tab label="Foto" />
           <Tab label="Histórico de Calibrações" />
         </Tabs>
         <Box className={classes.tab}>{TablePanel()}</Box>

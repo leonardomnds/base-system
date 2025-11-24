@@ -354,6 +354,21 @@ export const ConvertFileToBase64 = (file) => new Promise((resolve, reject) => {
   reader.onerror = reject;
 });
 
+export const ConvertBase64ToFile = (base64: string, fileName: string) => {
+  const arr = base64.split(",");
+  const mimeMatch = arr[0]?.match(/:(.*?);/);
+  const mime = mimeMatch ? mimeMatch[1] : "";
+  const bstr = atob(arr[arr.length - 1] || "");
+  const n = bstr.length;
+  const u8arr = new Uint8Array(n);
+
+  for (let i = 0; i < n; i += 1) {
+    u8arr[i] = bstr.charCodeAt(i);
+  }
+
+  return new File([u8arr], fileName, { type: mime });
+};
+
 export const FormatUtcDate = (date: Date | string) => {
   if (typeof date === "string") {
     date = new Date(date);
