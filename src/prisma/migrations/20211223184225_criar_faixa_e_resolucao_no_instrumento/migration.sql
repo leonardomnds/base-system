@@ -33,19 +33,25 @@ ALTER TABLE `instrumentos` ADD CONSTRAINT `instrumentos_pessoa_id_fkey` FOREIGN 
 ALTER TABLE `instrumentos_calibracoes` ADD CONSTRAINT `instrumentos_calibracoes_instrumento_id_fkey` FOREIGN KEY (`instrumento_id`) REFERENCES `instrumentos`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- RenameIndex
-ALTER TABLE `categorias_pessoa` RENAME INDEX `categorias_pessoa.descricao_unique` TO `categorias_pessoa_descricao_key`;
+ALTER TABLE `categorias_pessoa` DROP INDEX `categorias_pessoa.descricao_unique`,
+    ADD UNIQUE INDEX `categorias_pessoa_descricao_key`(`descricao`);
 
 -- RenameIndex
-ALTER TABLE `grupos_pessoa` RENAME INDEX `grupos_pessoa.descricao_unique` TO `grupos_pessoa_descricao_key`;
+ALTER TABLE `grupos_pessoa` DROP INDEX `grupos_pessoa.descricao_unique`,
+    ADD UNIQUE INDEX `grupos_pessoa_descricao_key`(`descricao`);
 
 -- RenameIndex
-ALTER TABLE `instrumentos` RENAME INDEX `instrumentos.pessoa_id_tag_unique` TO `instrumentos_pessoa_id_tag_key`;
+ALTER TABLE `instrumentos` DROP INDEX `instrumentos.pessoa_id_tag_unique`,
+    ADD UNIQUE INDEX `instrumentos_pessoa_id_tag_key`(`pessoa_id`, `tag`);
 
 -- RenameIndex
-ALTER TABLE `pessoas` RENAME INDEX `pessoas.codigo_unique` TO `pessoas_codigo_key`;
+ALTER TABLE `pessoas` DROP INDEX `pessoas.codigo_unique`,
+    ADD UNIQUE INDEX `pessoas_codigo_key`(`codigo`);
 
 -- RenameIndex
-ALTER TABLE `pessoas` RENAME INDEX `pessoas.cpf_cnpj_unique` TO `pessoas_cpf_cnpj_key`;
+ALTER TABLE `pessoas` DROP INDEX `pessoas.cpf_cnpj_unique`,
+    ADD UNIQUE INDEX `pessoas_cpf_cnpj_key`(`cpf_cnpj`);
 
 -- RenameIndex
-ALTER TABLE `usuarios` RENAME INDEX `usuarios.usuario_unique` TO `usuarios_usuario_key`;
+ALTER TABLE `usuarios` DROP INDEX `usuarios.usuario_unique`,
+    ADD UNIQUE INDEX `usuarios_usuario_key`(`usuario`);
